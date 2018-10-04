@@ -10,6 +10,7 @@ class AlumnoBecasAlias{
     private $Fecha_postulacion;
     private $Postula_beca;
     private $Otras_becas;
+    private $Oscar_Bustos;
     private $Codigo_carrera;
     private $Nombre_carrera;
     private $Cedula;

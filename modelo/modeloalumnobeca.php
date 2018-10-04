@@ -40,6 +40,7 @@ class ModelAlumnoBecas {
                                                 al.fecha_postula,                                       
                                                 al.postula_beca_alum, 
                                                 al.otras_becas_alum,
+                                                al.oscar_bustos,
                                                 al.cod_carrera_alum,
                                                 (SELECT GROUP_CONCAT( `file_url` ) FROM adjuntos as adj WHERE adj.rut_alum =  al.rut_alum) as linkurl
                                         FROM alumnos AS al
@@ -64,6 +65,7 @@ class ModelAlumnoBecas {
                     $busq->__SET('alumbeca_fecha_postula', $r->fecha_postula);
                     $busq->__SET('alumbeca_postulabeca', $r->postula_beca_alum);
                     $busq->__SET('alumbeca_otrasbecas', $r->otras_becas_alum);
+                    $busq->__SET('alumbeca_oscarbustos', $r->oscar_bustos);
                     $busq->__SET('alumbeca_codigocarr', $r->cod_carrera_alum);
                     if($r->linkurl != null){
                         $archivos = explode(',',$r->linkurl);
@@ -103,11 +105,12 @@ class ModelAlumnoBecas {
                                                 al.fecha_postula,                                       
                                                 al.postula_beca_alum, 
                                                 al.otras_becas_alum,
+                                                al.oscar_bustos,
                                                 al.cod_carrera_alum,
                                                 carr.nombre_car,
                                                 (SELECT GROUP_CONCAT( `file_url` ) FROM adjuntos as adj WHERE adj.rut_alum =  al.rut_alum) as linkurl
                                         FROM alumnos as al, carreras as carr
-                                        WHERE al.otras_becas_alum = 'Beca Colaboracion' AND  al.cod_carrera_alum = carr.codigo_car
+                                        WHERE al.oscar_bustos = 'Beca Oscar Bustos Aburto' AND  al.cod_carrera_alum = carr.codigo_car
                                         ORDER BY al.rut_alum");
 
             $stm->execute();
@@ -122,6 +125,7 @@ class ModelAlumnoBecas {
                     $busq->__SET('Fecha_postulacion', $r->fecha_postula);
                     $busq->__SET('Postula_beca', $r->postula_beca_alum);
                     $busq->__SET('Otras_becas', $r->otras_becas_alum);
+                    $busq->__SET('Oscar_Bustos', $r->oscar_bustos);
                     $busq->__SET('Codigo_carrera', $r->cod_carrera_alum);
                     $busq->__SET('Nombre_carrera', $r->nombre_car);
                     if($r->linkurl != null){
@@ -152,7 +156,7 @@ class ModelAlumnoBecas {
             $result = array();
             $rs_query = $this->pdo->prepare("SELECT COUNT(al.id_alum) AS cantidad 
                                                 FROM alumnos AS al
-                                                WHERE al.otras_becas_alum =  'Beca Colaboracion' ");
+                                                WHERE al.oscar_bustos =  'Beca Oscar Bustos Aburto' ");
             $rs_query->execute();
             $total_reg = $rs_query->fetch(PDO::FETCH_OBJ);
             /*var_dump($total_reg->cantidad);
@@ -180,7 +184,8 @@ class ModelAlumnoBecas {
                                                 al.ap_mat_alum,
                                                 al.nombres_alum,
                                                 al.sexo_alum,
-                                                al.otras_becas_alum
+                                                al.otras_becas_alum,
+                                                al.oscar_bustos
                                         FROM alumnos as al, carreras as carr
                                         WHERE al.rut_alum = ? AND  al.cod_carrera_alum = carr.codigo_car");
             $stm->execute(array($rut));
@@ -194,6 +199,7 @@ class ModelAlumnoBecas {
                         $busq->__SET('alumbeca_nombres', $r->nombres_alum);
                         $busq->__SET('alumbeca_sexo', $r->sexo_alum);
                         $busq->__SET('alumbeca_otrasbecas', $r->otras_becas_alum);
+                        $busq->__SET('alumbeca_oscarbustos', $r->oscar_bustos);
 
                 $jsonresponse['success'] = true;
                 $jsonresponse['message'] = 'Se valida alumno correctamente';
@@ -225,6 +231,7 @@ class ModelAlumnoBecas {
                                                 al.fecha_postula,
                                                 al.postula_beca_alum,
                                                 al.otras_becas_alum,
+                                                al.oscar_bustos,
                                                 al.cod_carrera_alum,
                                                 carr.nombre_car,
                                                 (SELECT GROUP_CONCAT( `file_url` ) FROM adjuntos as adj WHERE adj.rut_alum =  al.rut_alum) as linkurl
@@ -252,6 +259,7 @@ class ModelAlumnoBecas {
                         
                         $busq->__SET('alumbeca_postulabeca', $r->postula_beca_alum);
                         $busq->__SET('alumbeca_otrasbecas', $r->otras_becas_alum);
+                        $busq->__SET('alumbeca_oscarbustos', $r->oscar_bustos);
                         $busq->__SET('alumbeca_codigocarr', $r->cod_carrera_alum);
                         $busq->__SET('alumbeca_nombrecarr', $r->nombre_car);
 
@@ -286,19 +294,19 @@ class ModelAlumnoBecas {
         try{
             $sql = "UPDATE alumnos SET  telefono_alum = ?,
                                         correo_alum = ?,
-                                        otras_becas_alum = ?,
+                                        oscar_bustos = ?,
                                         fecha_postula = now()
                     WHERE  id_alum = ? AND  rut_alum = ?";
 
             $stm=$this->pdo->prepare($sql)->execute(array($data->__GET('alumbeca_fono'),
                                                      $data->__GET('alumbeca_correo'),
-                                                     $data->__GET('alumbeca_otrasbecas'),
+                                                     $data->__GET('alumbeca_oscarbustos'),
                                                      $data->__GET('alumbeca_id'),
                                                      $data->__GET('alumbeca_rut')
                                                          )
                                                     );
             if($stm==true){
-                if($data->__GET('alumbeca_otrasbecas')=='No postula'){
+                if($data->__GET('alumbeca_oscarbustos')=='No postula'){
                     $msg="Registrado correctamente";
                     $respuestaelimina = $this->EliminarFiles($data->__GET('alumbeca_rut'));
                     /*var_dump($respuestaelimina);

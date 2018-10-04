@@ -143,7 +143,7 @@
                                         + " \n textStatus : " + textStatus
                                         + " \n jqXHR.status : " + jqXHR.status );
                         }
-                        JSONToCSVConvertor(data.datos, "Informe Becas Colaboración", true);
+                        JSONToCSVConvertor(data.datos, "Informe Becas Oscar Bustos Aburto", true);
                     })
                     .fail(function( jqXHR, textStatus, errorThrown ) {
                         if ( console && console.log ) {

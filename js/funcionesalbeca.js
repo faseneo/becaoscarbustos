@@ -5,17 +5,17 @@
     }
     function limpiaform(){
         $("#rut").val("");
-        $("#becacolaboracion").val("");
+        $("#becaoscarbustos").val("");
         $("#correo").val("");
         $("#telefono").val("+569");
     }        
     function habilitaform(){
-        $("#becacolaboracion").prop( "disabled", false );
+        $("#becaoscarbustos").prop( "disabled", false );
         $("#correo").prop( "disabled", false );
         $("#telefono").prop( "disabled", false );
     }
     function deshabilitaform(){
-        $("#becacolaboracion").prop( "disabled", true );
+        $("#becaoscarbustos").prop( "disabled", true );
         $("#correo").prop( "disabled", true );
         $("#telefono").prop( "disabled", true );
     }
@@ -46,7 +46,7 @@
                     deshabilitaform();
                     $('#correo').val(data.datos.alumbeca_correo);
                     $('#telefono').val(data.datos.alumbeca_fono);
-                    $('#becacolaboracion').val(data.datos.alumbeca_otrasbecas);
+                    $('#becaoscarbustos').val(data.datos.alumbeca_oscarbustos);
                     $('#salir').html("<a href='salir.php' class='btn btn-default' role='button' >Salir</a>");
                     deshabilitabotones();
                     $('#modificar').show();

@@ -1,8 +1,8 @@
 <?php
 //$con = new mysqli('localhost','root','umce123','alumnos_dae');
-	define('HOST','146.83.132.24');
+	define('HOST','localhost');
 	define('USERDB','root');
-	define('PASSDB','umce123');
+	define('PASSDB','');
 	define('DB','alumnos_dae');
 	define('DAE14','dae_2014');
 	define('DAE15','dae_2015');

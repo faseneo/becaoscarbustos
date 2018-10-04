@@ -12,6 +12,7 @@ class AlumnoBecas{
     private $alumbeca_fecha_postula;
     private $alumbeca_postulabeca;
     private $alumbeca_otrasbecas;
+    private $alumbeca_oscarbustos;
     private $alumbeca_codigocarr;
     private $alumbeca_nombrecarr;
     private $alumbeca_archivo_url;

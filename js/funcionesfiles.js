@@ -53,7 +53,7 @@
                     tabla += '<tr><td colspan="2">Correo: ' + data.datos.alumbeca_correo;
                     tabla += '</td><td>Teléfono: ' + data.datos.alumbeca_fono+'</td></tr>';
                     tabla += '<tr><td colspan="3">Carrera: ' + data.datos.alumbeca_nombrecarr + '</td></tr>';
-                    tabla += '<tr><td colspan="3">Beca a la que postula: <b>' + data.datos.alumbeca_otrasbecas + '</b></td></tr>';
+                    tabla += '<tr><td colspan="3">Beca a la que postula: <b>' + data.datos.alumbeca_oscarbustos + '</b></td></tr>';
                     $('#datosalumno').append(tabla);
                     $("#email").val(data.datos.alumbeca_correo);
                 }

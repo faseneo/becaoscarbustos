@@ -44,22 +44,34 @@ include ('seguridad3.php');
     <div class="container">
       <div class="row">
         <div class="col-sm-12">
-          <h3 style="text-align:center"><?php if($sexo=='M'){echo "Bienvenido:";}else{echo "Bienvenida:";}?> <?php echo utf8_encode($nombre); ?></h3>
+          <h3 style="text-align:center"> Bienvenid@ <?php echo utf8_encode($nombre); ?></h3>
           <hr>
         </div>
       </div>  
       <div class="row" id="descripcion">
         <div class="col-sm-12">
-          <h4>Beca de Colaboración</h4>
-          <p style="text-align:justify;">Consiste en un estímulo en dinero mensual para los estudiantes que presentan el interés de contribuir a su casa de estudios, a través de la realización de tareas, que permitan afianzar su identidad y favorecer a la formación de cada uno de ellos, además de apoyarlos económicamente.<br><br>
-            Para el año 2018, existen 15 becas disponibles en los distintos departamentos o unidades que requieran de estudiantes para desempeñar labores al interior de la institución.<br><br>
-            Tendrán prioridad cuando corresponda, los estudiantes que hayan obtenido el beneficio en el año anterior y que cumplan con los requisitos establecidos para cada tipo de beca.<br><br>
-            Revise los requisitos de postulación en el
-            <a href="reglamento/2017_N_101342_Res_Ex_aprueba_Reglamento_General_de_Becas_que_indican_para_alumnos_de_pregrado.pdf">Reglamento de Becas Internas</a>
+          <h4>Beca Oscar Bustos Aburto</h4>
+          <p style="text-align:justify;">La Corporación de Desarrollo Cultural y Social  “Aurora de Italia”, entrega apoyo a estudiantes universitarios, seleccionados por su destacado mérito académico y reconocido esfuerzo que hacen para financiar sus estudios en Educación Superior.
+Para ello, otorga <strong>3 BECAS de $280.000.- (pago único)</strong> a estudiantes de pregrado de la UMCE que cumplan los siguientes requisitos:<br><br>
+            ESTUDIANTES 1° AÑO:
+            <ul>
+              <li>Haber aprobado el 100% de las asignaturas del 1° semestre 2018.</li>
+              <li>Promedio del semestre, igual o superior a 6,0.</li>
+              <li>Ingreso per capita familiar hasta 5° decil, según clasificación Ministerio Desarrollo Social.</li>
+            </ul>
+            <p>
+            ESTUDIANTES 2° AÑO O POSTERIOR:
+            <ul>
+              <li>Haber aprobado el 100% de las asignaturas del 1° semestre 2018.</li>
+              <li>Estar cursando por primera vez el año o semestre de la carrera.</li>
+              <li>Promedio del semestre, igual o superior a 6,0.</li>
+              <li>No haber reprobado ramos durante el transcurso de la carrera.</li>
+              <li>Ingreso per capita familiar hasta 5° decil, según clasificación Ministerio Desarrollo Social.</li>
+            </ul>
+            <br><br>
           </p>
         </div>
       </div>
-      <br>
       <!-- Comienzo del formulario UMCE por Luis García Manzo -->
       <form  role="form" name="formulariopostulacon" id="formulariopostulacon" method="post">
         <input type="hidden" name="rut" id ="rut" value="<?php echo $rut; ?>">
@@ -73,9 +85,9 @@ include ('seguridad3.php');
         <div class="row">
           <div class="col-sm-4 col-sm-offset-4" style="text-align:center;">
             <div class="form-group">
-              <select name='becacolaboracion' id='becacolaboracion' class="form-control">
+              <select name='becaoscarbustos' id='becaoscarbustos' class="form-control">
 <!--                 <option value='No postula'>No deseo postular</option> -->
-                <option value='Beca Colaboracion'>Beca Colaboración</option>
+                <option value='Beca Oscar Bustos Aburto'>Beca Oscar Bustos Aburto</option>
               </select>
             </div>
           </div>

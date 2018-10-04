@@ -15,14 +15,15 @@ if(isset($_REQUEST['Accion'])){
     switch($_REQUEST['Accion']){
         case 'valida': //OK
             $jsondata = $modelAlum->Valida($_REQUEST['rut']);
-                $_SESSION["autentica"] = "YEP";
+            /*var_dump($jsondata);*/
+                $_SESSION["autentica"] = "YEP";               
                 $_SESSION["id"] = $jsondata["datos"]["alumbeca_id"];
                 $_SESSION["rut"] = $jsondata["datos"]["alumbeca_rut"];
                 $_SESSION["apepat"] = $jsondata["datos"]["alumbeca_apepat"];
                 $_SESSION["apemat"] = $jsondata["datos"]["alumbeca_apemat"];
                 $_SESSION["nom"] = $jsondata["datos"]["alumbeca_nombres"];
                 $_SESSION["sex"] = $jsondata["datos"]["alumbeca_sexo"];
-                $_SESSION["otrasbecas"] = $jsondata["datos"]["alumbeca_otrasbecas"];
+                $_SESSION["oscarbustos"] = $jsondata["datos"]["alumbeca_oscarbustos"];
                 $_SESSION['instante']   = time();
             header('Content-type: application/json; charset=utf-8');
             echo json_encode($jsondata);  
@@ -31,7 +32,7 @@ if(isset($_REQUEST['Accion'])){
         case 'registrar': //OK
             $alum->__SET('alumbeca_id',         $_REQUEST['id']);
             $alum->__SET('alumbeca_rut',        $_REQUEST['rut']);
-            $alum->__SET('alumbeca_otrasbecas', $_REQUEST['becacolaboracion']);
+            $alum->__SET('alumbeca_oscarbustos', $_REQUEST['becaoscarbustos']);
             $alum->__SET('alumbeca_correo',     $_REQUEST['correo']);
             $alum->__SET('alumbeca_fono',       $_REQUEST['telefono']);
             $jsondata = $modelAlum->Registrar($alum);

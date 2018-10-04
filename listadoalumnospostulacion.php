@@ -30,7 +30,7 @@
 <body>
     <?php include "cabecera.php"; ?>
 	<div class="container" style="margin-top:10px">
-		<h2 class="sub-header">Alumnos Beca Colaboración</h2>
+		<h2 class="sub-header">Alumnos Beca Oscar Bustos Aburto</h2>
 		<div class="input-group"> <span class="input-group-addon">Buscar</span>
         <input id="filtrar" type="text" class="form-control" placeholder="Ingresa el RUT que deseas Buscar">
       </div>
