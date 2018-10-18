@@ -11,6 +11,9 @@ class AlumnoBecasAlias{
     private $Postula_beca;
     private $Otras_becas;
     private $Oscar_Bustos;
+    private $Banco;
+    private $Nro_cuenta;
+    private $Tipo_cuenta;
     private $Codigo_carrera;
     private $Nombre_carrera;
     private $Cedula;

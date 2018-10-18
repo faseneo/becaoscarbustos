@@ -13,6 +13,9 @@ class AlumnoBecas{
     private $alumbeca_postulabeca;
     private $alumbeca_otrasbecas;
     private $alumbeca_oscarbustos;
+    private $alumbeca_banco;
+    private $alumbeca_nrocta;
+    private $alumbeca_tipocta;
     private $alumbeca_codigocarr;
     private $alumbeca_nombrecarr;
     private $alumbeca_archivo_url;

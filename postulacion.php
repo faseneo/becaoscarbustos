@@ -48,11 +48,11 @@ include ('seguridad3.php');
           0% { transform: rotate(0deg); }
           100% { transform: rotate(360deg); }
       }
-      .logos{
+       .logos{
         display: none;
       }
       #logopostula{
-        display: block;
+        display: inline;
       }
       #importante{
         text-align:center;

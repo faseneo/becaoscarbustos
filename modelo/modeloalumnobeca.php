@@ -41,10 +41,12 @@ class ModelAlumnoBecas {
                                                 al.postula_beca_alum, 
                                                 al.otras_becas_alum,
                                                 al.oscar_bustos,
+                                                al.banco,
+                                                al.nro_cta,
+                                                al.tipo_cta,
                                                 al.cod_carrera_alum,
-                                                (SELECT GROUP_CONCAT( `file_url` ) FROM adjuntos as adj WHERE adj.rut_alum =  al.rut_alum) as linkurl
                                         FROM alumnos AS al
-                                        WHERE al.otras_becas_alum =  'Beca Colaboracion'
+                                        WHERE al.oscar_bustos =  'Beca Oscar Bustos Aburto'
                                         ORDER BY al.rut_alum ASC 
                                         LIMIT ".$reginicio.",".$CantidadMostrar);
 
@@ -66,6 +68,9 @@ class ModelAlumnoBecas {
                     $busq->__SET('alumbeca_postulabeca', $r->postula_beca_alum);
                     $busq->__SET('alumbeca_otrasbecas', $r->otras_becas_alum);
                     $busq->__SET('alumbeca_oscarbustos', $r->oscar_bustos);
+                    $busq->__SET('alumbeca_banco', $r->banco);
+                    $busq->__SET('alumbeca_nrocta', $r->nro_cta);
+                    $busq->__SET('alumbeca_tipocta', $r->tipo_cta);
                     $busq->__SET('alumbeca_codigocarr', $r->cod_carrera_alum);
                     if($r->linkurl != null){
                         $archivos = explode(',',$r->linkurl);
@@ -106,9 +111,11 @@ class ModelAlumnoBecas {
                                                 al.postula_beca_alum, 
                                                 al.otras_becas_alum,
                                                 al.oscar_bustos,
+                                                al.banco,
+                                                al.nro_cta,
+                                                al.tipo_cta,
                                                 al.cod_carrera_alum,
                                                 carr.nombre_car,
-                                                (SELECT GROUP_CONCAT( `file_url` ) FROM adjuntos as adj WHERE adj.rut_alum =  al.rut_alum) as linkurl
                                         FROM alumnos as al, carreras as carr
                                         WHERE al.oscar_bustos = 'Beca Oscar Bustos Aburto' AND  al.cod_carrera_alum = carr.codigo_car
                                         ORDER BY al.rut_alum");
@@ -126,6 +133,9 @@ class ModelAlumnoBecas {
                     $busq->__SET('Postula_beca', $r->postula_beca_alum);
                     $busq->__SET('Otras_becas', $r->otras_becas_alum);
                     $busq->__SET('Oscar_Bustos', $r->oscar_bustos);
+                    $busq->__SET('Banco', $r->banco);
+                    $busq->__SET('Nro_cta', $r->nro_cta);
+                    $busq->__SET('Tipo_cta', $r->tipo_cta);
                     $busq->__SET('Codigo_carrera', $r->cod_carrera_alum);
                     $busq->__SET('Nombre_carrera', $r->nombre_car);
                     if($r->linkurl != null){
@@ -232,9 +242,11 @@ class ModelAlumnoBecas {
                                                 al.postula_beca_alum,
                                                 al.otras_becas_alum,
                                                 al.oscar_bustos,
+                                                al.banco,
+                                                al.nro_cta,
+                                                al.tipo_cta,
                                                 al.cod_carrera_alum,
-                                                carr.nombre_car,
-                                                (SELECT GROUP_CONCAT( `file_url` ) FROM adjuntos as adj WHERE adj.rut_alum =  al.rut_alum) as linkurl
+                                                carr.nombre_car
                                         FROM alumnos as al, carreras as carr
                                         WHERE al.rut_alum = ? 
                                         AND  al.cod_carrera_alum = carr.codigo_car");
@@ -260,17 +272,12 @@ class ModelAlumnoBecas {
                         $busq->__SET('alumbeca_postulabeca', $r->postula_beca_alum);
                         $busq->__SET('alumbeca_otrasbecas', $r->otras_becas_alum);
                         $busq->__SET('alumbeca_oscarbustos', $r->oscar_bustos);
+                        $busq->__SET('alumbeca_banco', $r->banco);
+                        $busq->__SET('alumbeca_nrocta', $r->nro_cta);
+                        $busq->__SET('alumbeca_tipocta', $r->tipo_cta);
                         $busq->__SET('alumbeca_codigocarr', $r->cod_carrera_alum);
                         $busq->__SET('alumbeca_nombrecarr', $r->nombre_car);
 
-                        if($r->linkurl != null){
-                            $archivos = explode(',',$r->linkurl);
-                            $busq->__SET('alumbeca_archivo_url', $archivos[0]);
-                            $busq->__SET('alumbeca_archivo_url2', $archivos[1]);
-                        }else{
-                            $busq->__SET('alumbeca_archivo_url', null);
-                            $busq->__SET('alumbeca_archivo_url2', null);
-                        }
                 $jsonresponse['success'] = true;
                 $jsonresponse['message'] = 'Se obtuvo alumno correctamente';
                 $jsonresponse['datos'] = $busq->returnArray();
@@ -295,12 +302,18 @@ class ModelAlumnoBecas {
             $sql = "UPDATE alumnos SET  telefono_alum = ?,
                                         correo_alum = ?,
                                         oscar_bustos = ?,
+                                        banco = ?,
+                                        nro_cta = ?,
+                                        tipo_cta = ?,
                                         fecha_postula = now()
                     WHERE  id_alum = ? AND  rut_alum = ?";
 
             $stm=$this->pdo->prepare($sql)->execute(array($data->__GET('alumbeca_fono'),
                                                      $data->__GET('alumbeca_correo'),
                                                      $data->__GET('alumbeca_oscarbustos'),
+                                                     $busq->__SET('alumbeca_banco'),
+                                                     $busq->__SET('alumbeca_nrocta'),
+                                                     $busq->__SET('alumbeca_tipocta'),
                                                      $data->__GET('alumbeca_id'),
                                                      $data->__GET('alumbeca_rut')
                                                          )

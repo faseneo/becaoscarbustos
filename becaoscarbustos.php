@@ -99,9 +99,38 @@ Para ello, otorga <strong>3 BECAS de $280.000.- (pago único)</strong> a estudia
           </div>
         </div>        
         <div class="row">
-          <div class="col-sm-6 col-sm-offset-3 form-inline" style="text-align:center;">
+          <div class="col-sm-12 form-inline" style="text-align:center;">
             <input type="text" class="form-control" name="correo" id="correo" placeholder="correo@mimail.com" required />
             <input type="text" class="form-control" name="telefono" id="telefono" maxlength="12" value="+569" required />
+            <select name="banco" id="banco" class="form-control">
+              <option value="">Banco</option>
+              <option value="BBVA">BBVA</option>
+              <option value="Banco Estado">Banco Estado</option>
+              <option value="Banco de Chile">Banco de Chile</option>
+              <option value="Banco Internacional">Banco Internacional</option>
+              <option value="Scotiabank Chile">Scotiabank Chile</option>
+              <option value="BCI">BCI</option>
+              <option value="Corpbanca">Corpbanca</option>
+              <option value="Banco Bice">Banco Bice</option>
+              <option value="HSBC Bank">HSBC Bank</option>
+              <option value="Banco Santander">Banco Santander</option>
+              <option value="Banco Itaú">Banco Itaú</option>
+              <option value="The Royal Bank of Scotland (Chile)">The Royal Bank of Scotland (Chile)</option>
+              <option value="Banco Security">Banco Security</option>
+              <option value="Banco Falabella">Banco Falabella</option>
+              <option value="Deutsche Bank (Chile)">Deutsche Bank (Chile)</option>
+              <option value="Banco Ripley">Banco Ripley</option>
+              <option value="Rabobank Chile">Rabobank Chile</option>
+              <option value="Banco Consorcio">Banco Consorcio</option>
+              <option value="Banco Penta">Banco Penta</option>
+              <option value="Banco Paris">Banco Paris</option>
+            </select>
+            <input type="text" class="form-control" name="nro_cta" id="nro_cta" maxlength="12" placeholder="Nro. de Cuenta" required />
+            <select class="form-control" name="tipo_cta" id="tipo_cta">
+              <option value="ctarut">Rut</option>
+              <option value="ctavista">Vista</option>
+              <option value="ctacorriente">Corriente</option>
+            </select>
           </div>
         </div>
         <div class="row">

@@ -8,16 +8,25 @@
         $("#becaoscarbustos").val("");
         $("#correo").val("");
         $("#telefono").val("+569");
+        $("#banco").val("");
+        $("#nro_cta").val("");
+        $("#tipo_cta").val("");
     }        
     function habilitaform(){
         $("#becaoscarbustos").prop( "disabled", false );
         $("#correo").prop( "disabled", false );
         $("#telefono").prop( "disabled", false );
+        $("#banco").prop( "disabled", false );
+        $("#nro_cta").prop( "disabled", false );
+        $("#tipo_cta").prop( "disabled", false );
     }
     function deshabilitaform(){
         $("#becaoscarbustos").prop( "disabled", true );
         $("#correo").prop( "disabled", true );
         $("#telefono").prop( "disabled", true );
+        $("#banco").prop( "disabled", true );
+        $("#nro_cta").prop( "disabled", true );
+        $("#tipo_cta").prop( "disabled", true );
     }
 
     $(document).ready(function(){
@@ -39,11 +48,14 @@
                         + " \n textStatus : " + textStatus
                         + " \n jqXHR.status : " + jqXHR.status );
                    }*/
-                if(data.datos.alumbeca_otrasbecas == "" ){
+                if(data.datos.alumbeca_oscarbustos == "" ){
                     deshabilitabotones();
                     $('#enviar').show();
                 }else{
                     deshabilitaform();
+                    $('#tipo_cta').val(data.datos.alumbeca_tipocta);
+                    $('#nro_cta').val(data.datos.alumbeca_nrocta);
+                    $('#banco').val(data.datos.alumbeca_banco);
                     $('#correo').val(data.datos.alumbeca_correo);
                     $('#telefono').val(data.datos.alumbeca_fono);
                     $('#becaoscarbustos').val(data.datos.alumbeca_oscarbustos);
@@ -65,6 +77,11 @@
         function validarFormulario(){
             var txtCorreo = document.getElementById('correo').value;
             var txtTelefono = document.getElementById('telefono').value;
+            var selBanco = document.getElementById('banco').selectedIndex;
+            console.log(selBanco);
+            var txtNro_cta = document.getElementById('nro_cta').value;
+            var selTipo_cta = document.getElementById('tipo_cta').selectedIndex;
+            console.log(selTipo_cta);
                 //Test campo obligatorio
                 if(txtCorreo == null || txtCorreo.length == 0 || /^\s+$/.test(txtCorreo)){
                     alert('ERROR: El campo correo no debe ir vacío o con espacios en blanco');
@@ -75,7 +92,22 @@
                     alert('ERROR: El campo telefono no debe ir vacío o con espacios en blanco');
                     document.getElementById('telefono').focus();
                     return false;
-                }                
+                }
+                if(selBanco == null || selBanco == -1 || isNaN(txtTelefono)){
+                    alert('ERROR: Debe seleccionar un banco de la lista');
+                    document.getElementById('banco').focus();
+                    return false;
+                } 
+                if(txtNro_cta == null || txtNro_cta.length == 0 || /^\s+$/.test(txtNro_cta)){
+                    alert('ERROR: El campo Nro. de Cuenta no debe ir vacío o con espacios en blanco');
+                    document.getElementById('nro_cta').focus();
+                    return false;
+                } 
+                if(selTipo_cta == null || selTipo_cta.length == isNaN(selTipo_cta)){
+                    alert('ERROR: El campo Tipo de Cuenta no debe ir vacío o con espacios en blanco');
+                    document.getElementById('tipo_cta').focus();
+                    return false;
+                }                 
                 return true;
             }         
 

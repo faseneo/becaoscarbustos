@@ -21,24 +21,30 @@
         </div>
       </div>
       <div class="row" id="logopostula">
-        <div class="col-sm-12">
-            <center><img src="img/templates/logo_umce_2018_290.jpg" class="img-rounded"></center>
-        </div>
+        <table class="table">
+          <tr>
+            <td style="text-align:left;"><img src="img/templates/logo_umce_2018_100.jpg"></td>
+            <td style="text-align:center;"><h4>Postulación Beca Oscar Bustos Aburto 2018</h4></td>
+            <td style="text-align:right;"><img src="img/templates/logo_dae_peda_50.png"></td>
+          </tr>
+        </table>
       </div>
       <div class="row">
         <div class="col-sm-3">
           <div class="logos">
-            <img src="img/templates/logo_umce_2018_290.jpg" class="img-rounded">
+            <img src="img/templates/logo_umce_2018_200.jpg">
           </div>
         </div>
         <div class="col-sm-6">
           <div style="text-align:center">
-            <h3>Postulación Beca Oscar Bustos Aburto 2018 </h3>
+            <div class="logos">
+              <h3>Postulación Beca Oscar Bustos Aburto 2018 </h3>
+            </div>
           </div>
         </div>
         <div class="col-sm-3">
           <div class="logos" style="float:right;">
-            <img src="img/templates/logo_dae_peda_150.png" class="img-rounded">
+            <img src="img/templates/logo_dae_peda_96.png">
           </div>
         </div>
       </div>

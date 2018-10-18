@@ -13,6 +13,54 @@
         }
 
         // implementacion button valida alumno
+        $('#rut').keypress(function(e) {
+            var keycode = (e.keyCode ? e.keyCode : e.which);
+            console.log(keycode);
+                if (keycode === 13) {
+                    e.preventDefault();
+                    if(validarFormulario()==true){
+                        var datax = $("#formlogin").serializeArray();
+                        /*$.each(datax, function(i, field){
+                            console.log("contenido del form = "+ field.name + ":" + field.value + " ");
+                        });*/
+                        $.ajax({
+                            data: datax, 
+                            type: "POST",
+                            dataType: "json", 
+                            url: "controllers/controlalumnobeca.php", 
+                        })
+                        .done(function( data, textStatus, jqXHR ) {
+                            /*if ( console && console.log ) {
+                                console.log( " data success : "+ data.success 
+                                    + " \n data msg : "+ data.message 
+                                    + " \n textStatus : " + textStatus
+                                    + " \n jqXHR.status : " + jqXHR.status );
+                            }*/
+                            if(data.datos != null ){
+                                window.location.href="becaoscarbustos.php";
+                            }else{
+                                $('#msgerror').removeClass("hidden");
+                                $('#msgerror').html("Alumno no existe");
+                            }
+
+                           
+                        })
+                        .fail(function( jqXHR, textStatus, errorThrown ) {
+                            if ( console && console.log ) {
+                                console.log( " La solicitud ha fallado,  textStatus : " +  textStatus 
+                                    + " \n errorThrown : "+ errorThrown
+                                    + " \n textStatus : " + textStatus
+                                    + " \n jqXHR.status : " + jqXHR.status );
+                            }
+                        }); 
+                    }else{
+                        console.log("no pico");    
+                    }
+                    return false;
+                    
+                }
+        });
+
         $("#entrar").click(function(e){
             e.preventDefault();
             if(validarFormulario()==true){
